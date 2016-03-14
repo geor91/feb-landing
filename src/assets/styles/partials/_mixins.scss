@@ -1,0 +1,89 @@
+// FONT-FACE SHORTCUT
+	@mixin font-face ($font-name, $file-name) {
+		@font-face {
+			font-family: $font-name;
+			src: url('../fonts/#{$file-name}/font.eot#iefix');
+			src: url('../fonts/#{$file-name}/font.eot') format('embedded-opentype'),
+				 url('../fonts/#{$file-name}/font.ttf') format('truetype'),
+				 url('../fonts/#{$file-name}/font.woff') format('woff'),
+				 url('../fonts/#{$file-name}/font.woff2') format('woff2'),
+				 url('../fonts/#{$file-name}/font.svg') format('svg');
+		}
+	}
+
+// FONT-FAMILY MIXIN
+	@mixin font-family($font-name) {
+		font-family: $font-name, arial, serif;
+	}
+
+// CENTERED
+	@mixin centered($horizontal: true, $vertical: true) {
+		position: absolute;
+		@if ($horizontal and $vertical) {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		} @else if ($horizontal) {
+			left: 50%;
+			transform: translate(-50%, 0);
+		} @else if ($vertical) {
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+	}
+
+// SELECTION MIXIN
+	@mixin selection () {
+		&::selection {
+			@content;
+		}
+		&::-moz-selection {
+			@content;			
+		}
+	}
+
+// REM UNIVERSAL MIXIN (with fallbacks)
+	@mixin rem($property, $values) {
+		$font-size: $base-font-size;
+		$px-values: ();
+		$rem-values: ();
+
+		@each $value in $values {
+			@if $value == 0 or $value == 0px {
+				$px-values: join($px-values, 0);
+				$rem-values: join($rem-values, 0);
+			} @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+				$new-rem-value: $value / $font-size;
+				$px-values: join($px-values, round($value));
+				$rem-values: join($rem-values, #{$new-rem-value}rem);
+			} @else if type-of($value) == number and not unitless($value) and (unit($value) == "%") {
+				$px-values: join($px-values, #{$value});
+				$rem-values: join($rem-values, #{$value});
+			} @else if $value == auto {
+				$px-values: join($px-values, auto);
+				$rem-values: join($rem-values, auto);
+			} @else {
+				$px-values: join($px-values, round($value * $font-size));
+				$rem-values: join($rem-values, #{$value}rem);
+			}
+		}
+		#{$property}: $px-values;
+		#{$property}: $rem-values;
+	}
+
+// DISPLAY TABLE CONTAINER MIXIN
+	@mixin table ($valign: top) {
+		display: table;
+		width: #{$pos2};
+		& > * {
+			display: table-cell;
+			vertical-align: $valign;
+		}
+	}
+
+// BREAKPOINTS
+	@mixin viewport ($value) {
+		@media only screen and ($value) {
+			@content;
+		}
+	}

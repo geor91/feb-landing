@@ -1,0 +1,102 @@
+// ф-ция, экранирующая символ \
+// т.к. sass воспринимает его неправильно
+// передаем символьный код иконки (напр. e900)
+// дописываем перед кодом иконки - "\ и после кода - "
+// в результате получается полный код иконки - "\e900"
+@function unicode($char-code){
+	@return #{'\"\\' + $char-code + "\""};
+}
+
+// коды иконок (без слеша перед кодом, см. функцию выше)
+	$icons-codes: (
+		"user-md": "e900",
+		"home": "e800",
+		"pencil": "e802",
+		"lock": "e80f",
+		"cog": "e810",
+		"trash": "e811",
+		"star": "e814",
+		"star-half": "e815",
+		"star-empty": "e816",
+		"envelope": "e818",
+		"paperclip": "e819",
+		"eye": "e81b",
+		"printer": "e81c",
+		"file-empty": "e81d",
+		"file-add": "e81e",
+		"user": "e82a",
+		"tag": "e82f",
+		"phone-handset": "e830",
+		"phone": "e831",
+		"map-marker": "e833",
+		"calendar-full": "e836",
+		"spell-check": "e838",
+		"bubble": "e83f",
+		"wheelchair": "e851",
+		"undo": "e860",
+		"redo": "e861",
+		"sync": "e862",
+		"download": "e865",
+		"upload": "e866",
+		"link": "e86b",
+		"unlink": "e86c",
+		"magnifier": "e86f",
+		"cross": "e870",
+		"menu": "e871",
+		"list": "e872",
+		"chevron-up": "e873",
+		"chevron-down": "e874",
+		"chevron-left": "e875",
+		"chevron-right": "e876",
+		"arrow-up": "e877",
+		"arrow-down": "e878",
+		"arrow-left": "e879",
+		"arrow-right": "e87a",
+		"move": "e87b",
+		"question-circle": "e87d",
+		"checkmark-circle": "e87f",
+		"cross-circle": "e880",
+		"plus-circle": "e881",
+		"circle-minus": "e882",
+		"arrow-up-circle": "e883",
+		"arrow-down-circle": "e884",
+		"arrow-left-circle": "e885",
+		"arrow-right-circle": "e886",
+		"chevron-up-circle": "e887",
+		"chevron-down-circle": "e888",
+		"chevron-left-circle": "e889",
+		"chevron-right-circle": "e88a",
+		"crop": "e88b",
+		"frame-expand": "e88c",
+		"frame-contract": "e88d",
+		"text-align-left": "e898",
+		"text-align-center": "e899",
+		"text-align-right": "e89a",
+		"text-align-justify": "e89b"
+	);
+
+// файлы шрифтов подключаются в fonts.scss
+	
+
+// общий стили для всех иконок
+	i[class*="icon-"] {
+		font-family: "icons" !important;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		line-height: 1;
+		speak: none;
+
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+// проходим по всем иконкам и проставляем соответствующие коды
+	@each $icon-name, $icon-code in $icons-codes {
+	 .icon-#{$icon-name} {
+			&:before {
+				content: unicode($icon-code);
+			}
+		}
+	}

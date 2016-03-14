@@ -1,0 +1,328 @@
+// COMMON STYLES
+	// all blocks title
+		.block__title {
+			@include rem(margin-bottom, 17px);
+			@include font-family(os400);
+			font-size: 15px;
+			color: $color-gray-1;
+		}
+			.block__title_bold {
+				@include font-family(os600);
+			}
+			.block__title_lg {
+				@include rem(font-size, 33px);
+				line-height: 1.2;
+			}
+	// all blocks content
+		.block__content {
+			font-size: 16px;
+			line-height: 1.56;
+			color: $color-gray-3;
+
+			p {
+				margin-bottom: 0;
+				+ p {
+					@include rem(margin-top, 20px);
+				}
+			}
+			@include viewport('min-width: 1100px') {
+				@include rem(padding-right, 30px);
+			}
+		}
+			.block__content_lg {
+				@include rem(padding-right, 20px);
+				color: $color-gray-1;
+				line-height: 1.4;
+			}
+			.block__content_fluid {
+				padding-right: 0;
+			}
+			.block__content-image {
+				@include rem(padding, 30px 0);
+				text-align: center;
+
+				img {
+						@include rem(max-height, 240px);
+				}
+			}
+
+// HERO BLOCK
+	.hero-block {
+		@include rem(height, 474px); // bg image height
+		@include rem(margin-bottom, 25px);
+		background: url(/assets/images/for-clients-bg.jpg) 0 0 no-repeat;
+
+		@include viewport('max-width: 767px') {
+			background: url(/assets/images/for-clients-bg.jpg) center no-repeat;				
+			background-size: cover;
+
+			img {
+				display: none;
+			}
+		}
+	}
+		.hero-block__wrapper {
+			position: relative;
+			height: 100%;
+			@include font-family(os300);
+
+			@include viewport('max-width: 767px') {
+				padding-top: 0;
+			}
+
+			h2, p {
+				color: #fff;
+				@include selection () {
+					background: $color-yellow;
+					color: #000;
+					// text-shadow: none;
+				}
+			}
+			h2 {
+				@include rem(margin, 0 0 25px);
+				@include rem(font-size, 44px);
+				line-height: 1.25;
+				text-shadow: 1px 1px 3px rgba(0,0,0, .5);
+			}
+			p {
+				padding-right: 40px;
+				@include rem(font-size, 18px);
+				line-height: 1.44;
+				text-shadow: 1px 1px 1px rgba(0,0,0, .5);
+			}
+		}
+		.hero-block__content {
+			height: 100%;
+		}
+		.hero-content__desc {
+			@include viewport('max-width: 1199px') {
+				width: 75%;
+			}
+			@include viewport('max-width: 767px') {
+				width: 100%;
+				text-align: center;
+				p {
+					padding: 0;
+				}
+			}
+		}
+		.hero-content__image {
+			position: absolute;
+			right: 40px;
+			top: 40px;
+			@include rem(width, 337px);
+
+			@include viewport('max-width: 1199px') {
+				@include rem(width, 230px);
+			}
+			@include viewport('max-width: 767px') {
+				display: none;
+			}
+
+			img {
+				max-width: 100%;
+			}
+		}
+
+// DRIVER REGISTRATION BLOCK
+	.action-block {
+		@include rem(padding, 60px 0);
+		@include viewport('max-width: 480px') {
+			text-align: center;
+		}
+	}
+	.action-block__content-table {
+		display: table;
+
+		& > div {
+			display: table-cell;
+			vertical-align: top;
+		}
+
+		@include viewport('max-width: 992px') {
+			& > div {
+				vertical-align: middle;
+			}
+		}
+
+		@include viewport('max-width: 639px') {
+			display: block;
+			text-align: center;
+
+			& > div {
+				display: block;
+			}
+		}
+	}
+		.action-block__title {
+			@include rem(margin, 20px 0);
+		}
+		.action-block__image {
+			@include viewport('max-width: 639px') {
+				display: block;
+				@include rem(margin, 0 0 20px);
+			}
+		}
+		.action-block__content {
+			@include viewport('min-width: 640px') {
+				@include rem(padding-left, 50px);
+			}
+		}
+		.action-block__button {
+			@include rem(padding, 13px 33px);
+			@include font-family(os600);
+			font-size: 13px;
+			text-transform: uppercase;
+		}
+		.action-block__description {
+			@include viewport('min-width: 640px') {
+				@include rem(padding-top, 45px);
+			}
+			@include viewport('max-width: 992px') {
+				display: none;
+			}
+		}
+
+// PHONE-APPS
+	.phone-apps-container {
+		@include rem(margin, 25px auto 50px);
+		@include viewport('max-width: 1199px') {
+			text-align: center;
+		}
+		.phone-apps {
+			@include viewport('min-width: 767px') {
+				@include rem(margin-right, 70px);
+			}
+			@include viewport('max-width: 767px') {
+				display: block;
+				margin: 0 auto 25px;
+				text-align: center;
+			}
+		}
+	}
+	.phone-apps {
+		display: inline-block;
+		max-width: 310px;
+		vertical-align: top;
+		text-align: left;
+	}
+		.phone-apps__title {
+			margin-bottom: 5px;
+			font: 16px/1.6 os600, arial, serif;
+			color: $color-gray-2;
+		}
+
+		.phone-apps__content  {}
+			.button-store {
+				display: inline-block;
+				width: 155px;
+				height: 52px;
+				line-height: 52px;
+				text-align: center;
+				vertical-align: middle;
+				background-image: url(../images/button-store__icons.png);
+				background-repeat: no-repeat;
+			}
+				.button-store_apple {
+					background-position: -5px -5px;
+				}
+				.button-store_google {
+					background-position: -5px -67px;
+				}
+
+		.phone-apps__note {
+			max-width: 70%;
+			font-size: 11px;
+			line-height: 1.27;
+			color: #aaa;
+			@include viewport('max-width: 767px') {
+				max-width: 100%;
+			}
+		}
+
+// APP-GET-SMS
+	.app-get-sms {
+		position: relative;
+		display: inline-block;
+		vertical-align: top;
+		text-align: left;
+		@include viewport('max-width: 360px') {
+			display: block;
+		}
+	}
+		.app-get-sms__title {
+			margin-bottom: 5px;
+			font: 16px/1.6 os600, arial, serif;
+			color: $color-gray-2;			
+		}
+		.app-get-sms__action {
+			padding-right: 64px;
+		}
+		.app-get-sms__phone {
+			display: inline-block;
+			height: 44px;
+			@include rem(min-width, 240px);
+			vertical-align: top;
+			padding: 13px 17px;
+			border-color: $color-gray-4;
+			font-size: 13px;
+			color: #7e9b9b;
+		}
+		.app-get-sms__button {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 52px;
+			height: 44px;
+			// margin-left: 5px;
+			vertical-align: top;
+			background-image: url(../images/icons/icon-check.png);
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+// FEATUERES BLOCK COMMON STYLES
+		.features-item {
+			@include viewport('max-width: 767px') {
+				@include rem(margin-bottom, 20px);
+			}
+
+			@include viewport('min-width: 768px') {
+				& + & {
+					@include rem(margin-top, 20px);				
+				}
+			}
+		}
+		.features-item_lg {
+			@include viewport('max-width: 767px') {
+				@include rem(margin-bottom, 30px);
+			}
+
+			@include viewport('min-width: 768px') {
+				& + & {
+					@include rem(margin-top, 30px);				
+				}
+			}
+		}
+
+// QUICK START BLOCK
+	.quick-start__content {
+		width: 80%;
+		@include rem(max-width, 560px);
+		@extend .block__content_lg;
+		@extend .block__content_fluid;
+		@include rem(margin-bottom, 40px);
+	}
+	.quick-start__button {
+		@extend .action-block__button;
+		@include rem(margin-bottom, 20px);
+		@include rem(padding, 13px 23px);
+		font-size: 13px;
+		@include viewport('max-width: 480px') {
+			font-size: 11px;
+		}
+	}
+	.quick-start__additional {
+		font-size: 13px;
+		color: $color-gray-2;
+	}

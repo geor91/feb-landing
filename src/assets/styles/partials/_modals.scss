@@ -1,0 +1,50 @@
+$modal-window-W: 580px;
+
+.modal-window {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	right: auto;
+	bottom: auto;
+	transform: translate(-50%, -50%);
+	width: $modal-window-W;
+	padding: 50px !important;
+	padding: 5rem !important;
+	background-color: #fff;
+	border: 1px solid $color-gray-4;
+	box-shadow: 4px 7px 12px 0 rgba(14, 0, 0, .14);
+	z-index: 1050;
+
+	@include viewport ('max-width: #{$modal-window-W}') {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		box-shadow: none;
+		transform: translate(0,0);
+	}
+}
+.modal-window__title {
+	width: 70%;
+	@extend .block__title;
+	@extend .block__title_lg;
+	@include viewport ('max-width: #{$modal-window-W}') {
+		width: auto;
+	}
+}
+.modal-window__close-btn {
+	position: absolute;
+	top: 19px;
+	right: 19px;
+	width: 20px;
+	height: 20px;
+	background: url(../images/icons/icon-close.png) left top no-repeat;
+	cursor: pointer;
+	opacity: .8;
+	transition: opacity .3s;
+
+	&:hover {
+		opacity: 1;
+	}
+}

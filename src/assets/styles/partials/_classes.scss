@@ -1,0 +1,44 @@
+.section-row {
+	@include rem(margin, 25px auto);
+}
+.centered-content {
+	font-size: 0;
+
+	&:before {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		width: 1px;
+		vertical-align: middle;
+		margin-right: -1px;
+	}
+	& > * {
+		display: inline-block;
+		vertical-align: middle;
+		@include rem(font-size, 14px);
+		float: none;
+	}
+}
+
+.custom-select {
+	position: relative;
+
+	select {
+		appearance: none;
+		line-height: 1 !important; // need for appearance: none
+	}
+
+	// select arrow
+		$select-arrow-w: 11px;
+		$select-arrow-h: 8px;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: 15px;
+			margin-top: -$select-arrow-h/2;
+			border-style: solid;
+			border-width: $select-arrow-h $select-arrow-w/2 0 $select-arrow-w/2;
+			border-color: $color-gray-4 transparent transparent transparent;
+		}
+}

@@ -1,0 +1,43 @@
+#driverReg.modal.fade
+	.modal-window
+		a.modal-window__close-btn(href="#", data-dismiss="modal")
+		.modal-window__head
+			.modal-window__title Заявка на регистрацию водителя
+		.modal-window__body
+			form
+				.form-group.form-group-lg
+					label Регион
+					.custom-select
+						select(type="text", class="form-control")
+							option Регион 1
+							option Регион 2
+							option Регион 3
+				.form-group.form-group-lg
+					label Населенный пункт
+					.custom-select
+						select(type="text", class="form-control")
+							option Пункт 1
+							option Пункт 2
+							option Пункт 3
+				.form-group.form-group-lg
+					label ФИО
+					input(type="text", class="form-control")
+				.form-group.form-group-lg
+					label Телефон
+					input(type="text", class="form-control")
+				button.btn.btn-action.action-block__button Регистрация
+
+#quickStart.modal.fade
+	.modal-window
+		a.modal-window__close-btn(href="#", data-dismiss="modal")
+		.modal-window__head
+			.modal-window__title Обратная связь
+		.modal-window__body
+			form
+				.form-group.form-group-lg
+					label ФИО
+					input(type="text", class="form-control")
+				.form-group.form-group-lg
+					label Телефон
+					input(type="text", class="form-control")
+				button.btn.btn-action.action-block__button Отправить

@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+		title Feb Taxi
+		meta(charset="UTF-8")
+		meta(name="desctiption", content="Feb taxi online")
+		meta(name="keywords", content="taxi, online")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		link(rel="stylesheet", href="assets/styles/vendor.css")
+		link(rel="stylesheet", href="assets/styles/style.css")
+		block head
+	body
+		.main-wrap
+			include ../includes/header.jade
+			block content
+		include ../includes/footer.jade
+		include ../includes/modals.jade
+
+		script(src="//code.jquery.com/jquery-latest.min.js")
+		script(src="assets/scripts/vendor.js")
+		script(src="assets/scripts/app.js")
+		block scripts

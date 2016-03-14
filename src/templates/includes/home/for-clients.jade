@@ -1,0 +1,54 @@
+section
+	.hero-block
+		.hero-block__wrapper.container
+			.hero-block__content.row.centered-content
+				.hero-content__desc.col-md-8.col-sm-7.col-xs-7
+					h2 С нами вызвать такси просто! Закажи такси одной кнопкой.
+					p Feb – Международная служба заказа такси! Мы движемся в ногу со временем. Наши технологии делают вашу поездку комфортной. Следи за движением машины и оцени водителя по завершении заказа!
+				.hero-content__image
+					img(src="/assets/images/phone.png", alt="phone")
+
+	#clients.phone-apps-container.container
+		.row
+			.col-lg-8.col-md-12
+				.phone-apps
+					.phone-apps__title Установите бесплатное приложение:
+					.phone-apps__content
+						span.phone-apps__store
+							a.button-store.button-store_google(href="//play.google.com/store/apps/details?id=ru.macrobit.taxi", target="blank", alt="")
+						span.phone-apps__store
+							a.button-store.button-store_apple(href="//itunes.apple.com/ru/app/irtaxi/id927364613", target="blank")
+					.phone-apps__note * Оператор связи может взымать плату за передачу данных в сети
+
+				.app-get-sms
+					.app-get-sms__title Получить ссылку на телефон:
+					.app-get-sms__action
+						//- .app-get-sms__phone-plus +
+						input.form-control.app-get-sms__phone(
+							type="text", autocomplete="off", placeholder="Телефон", maxlength="18", tabindex="1")
+						button.app-get-sms__button.btn.btn-action
+
+	.container.features-block
+		.row
+			.col-md-4.col-sm-4
+				.features-item
+					.block__title.block__title_bold ОПЛАТА КАРТОЙ
+					.block__content Забудьте про наличные! Любую поездку на такси можно оплатить по кредитной карте, прямо из приложения. Мгновенно и без комиссии.
+				.features-item
+					.block__title.block__title_bold ОПЕРАТИВНО
+					.block__content Время подачи такси от 1-ой минуты
+			
+			.col-md-4.col-sm-4
+				.features-item
+					.block__title.block__title_bold ПОЕЗДКИ ОТ 50 РУБЛЕЙ
+					.block__content Наши цены ниже рыночных!
+				.features-item
+					.block__title.block__title_bold БОНУСЫ
+					.block__content Приглашайте друзей и получайте бонусы для оплаты поездок! Установи приложение и получи бонусы для оплаты поездок. 
+
+			.col-md-4.col-sm-4
+				.features-item
+					.block__title.block__title_bold КОРПОРАТИВНЫМ КЛИЕНТАМ
+					.block__content
+						p Приглашаем организации к сотрудничеству. Доставим ваших сотрудников быстро и недорого. Безналичная оплата. Прозрачность операций и контроль за расходами.
+						p Скидки постоянным клиентам 10%

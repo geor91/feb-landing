@@ -1,0 +1,60 @@
+html {
+	height: 100%;
+
+	@include viewport('max-width: 1200px') {
+		font-size: 9px;
+	}
+	@include viewport('max-width: 992px') {
+		font-size: 8px;
+	}
+	@include viewport('max-width: 768px') {
+		// font-size: 7px;
+	}
+	@include viewport('max-width: 480px') {
+		font-size: 7px;
+	}
+}
+
+body {
+	@include font-family(os400);
+	height: 100%;
+}
+
+.main-wrap {
+	max-width: 1300px;
+	margin: 0 auto;
+	min-height: 100%;
+	margin-bottom: -$footer-height;
+
+	&:after {
+		content: "";
+		display: block;
+		height: $footer-height;
+	}
+
+	section {
+		position: relative;
+		@include rem(margin-bottom, 55px);
+		@extend .clearfix;
+
+		&:nth-child(2n+1) {
+			background-color: #f9f9f9;
+		}
+		&.sticky-section {
+			margin-bottom: 0;
+		}
+	}
+		.section-title {
+				@include font-family(os600);
+				font-size: 15px;
+				color: $color-gray-3;
+				text-transform: uppercase;
+
+				@include viewport('max-width: 480px') {
+					text-align: center;
+				}
+			}
+				.section-title_heading {
+					@include rem(margin-bottom, 40px);
+				}
+}
