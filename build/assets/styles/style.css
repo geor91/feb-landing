@@ -5216,16 +5216,6 @@ button.close {
     border-color: #969695 transparent transparent transparent; }
 
 @font-face {
-  font-family: "icons";
-  src: url("../fonts/ais-icons/font.eot#iefix");
-  src: url("../fonts/ais-icons/font.eot") format("embedded-opentype"), url("../fonts/ais-icons/font.ttf") format("truetype"), url("../fonts/ais-icons/font.woff") format("woff"), url("../fonts/ais-icons/font.woff2") format("woff2"), url("../fonts/ais-icons/font.svg") format("svg"); }
-
-@font-face {
-  font-family: "hn";
-  src: url("../fonts/hn-medium/font.eot#iefix");
-  src: url("../fonts/hn-medium/font.eot") format("embedded-opentype"), url("../fonts/hn-medium/font.ttf") format("truetype"), url("../fonts/hn-medium/font.woff") format("woff"), url("../fonts/hn-medium/font.woff2") format("woff2"), url("../fonts/hn-medium/font.svg") format("svg"); }
-
-@font-face {
   font-family: "os300";
   src: url("../fonts/open-sans-300/font.eot#iefix");
   src: url("../fonts/open-sans-300/font.eot") format("embedded-opentype"), url("../fonts/open-sans-300/font.ttf") format("truetype"), url("../fonts/open-sans-300/font.woff") format("woff"), url("../fonts/open-sans-300/font.woff2") format("woff2"), url("../fonts/open-sans-300/font.svg") format("svg"); }
@@ -5492,8 +5482,6 @@ i[class*="icon-"] {
 .hero-block {
   height: 474px;
   height: 47.4rem;
-  margin-bottom: 25px;
-  margin-bottom: 2.5rem;
   background: url(/assets/images/for-clients-bg.jpg) 0 0 no-repeat; }
   @media only screen and (max-width: 767px) {
     .hero-block {
@@ -5565,13 +5553,6 @@ i[class*="icon-"] {
   .hero-content__image img {
     max-width: 100%; }
 
-.action-block {
-  padding: 60px 0;
-  padding: 6rem 0; }
-  @media only screen and (max-width: 480px) {
-    .action-block {
-      text-align: center; } }
-
 .action-block__content-table {
   display: table; }
   .action-block__content-table > div {
@@ -5619,8 +5600,10 @@ i[class*="icon-"] {
     display: none; } }
 
 .phone-apps-container {
-  margin: 25px auto 50px;
-  margin: 2.5rem auto 5rem; }
+  padding-top: 25px;
+  padding-top: 2.5rem;
+  padding-bottom: 50px;
+  padding-bottom: 5rem; }
   @media only screen and (max-width: 1199px) {
     .phone-apps-container {
       text-align: center; } }
@@ -5694,9 +5677,7 @@ i[class*="icon-"] {
   min-width: 24rem;
   vertical-align: top;
   padding: 13px 17px;
-  border-color: #969695;
-  font-size: 13px;
-  color: #7e9b9b; }
+  border-color: #969695; }
 
 .app-get-sms__button {
   position: absolute;
@@ -5777,12 +5758,12 @@ body {
     height: 135px; }
   .main-wrap section {
     position: relative;
-    margin-bottom: 55px;
-    margin-bottom: 5.5rem; }
+    padding: 55px 0;
+    padding: 5.5rem 0; }
+    .main-wrap section:first-of-type {
+      padding-top: 0; }
     .main-wrap section:nth-child(2n+1) {
       background-color: #f9f9f9; }
-    .main-wrap section.sticky-section {
-      margin-bottom: 0; }
   .main-wrap .section-title {
     font-family: os600, arial, serif;
     font-size: 15px;
@@ -5802,6 +5783,22 @@ header {
   @media only screen and (max-width: 767px) {
     header .container {
       position: static; } }
+  header.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 0;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    -webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s; }
+    header.fixed-header .site-logo {
+      bottom: 10px; }
   header .site-logo {
     position: absolute;
     bottom: -10px;
@@ -5845,7 +5842,7 @@ header {
         padding: 2.3rem;
         color: #969695;
         text-transform: uppercase; }
-        header .navbar .nav > li > a:hover, header .navbar .nav > li > a:focus {
+        header .navbar .nav > li > a:hover, header .navbar .nav > li > a:focus, header .navbar .nav > li > a.active {
           background: none;
           color: #000; }
 

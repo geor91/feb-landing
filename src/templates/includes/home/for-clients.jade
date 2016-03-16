@@ -25,8 +25,14 @@ section
 					.app-get-sms__action
 						//- .app-get-sms__phone-plus +
 						input.form-control.app-get-sms__phone(
-							type="text", autocomplete="off", placeholder="Телефон", maxlength="18", tabindex="1")
-						button.app-get-sms__button.btn.btn-action
+							type="text",
+							class="inputmask",
+							autocomplete="off",
+							placeholder="Телефон",
+							maxlength="18",
+							tabindex="1",
+							data-inputmask="'mask': '(999)-999-9999'")
+						button.app-get-sms__button.btn.btn-action(tabindex="2")
 
 	.container.features-block
 		.row

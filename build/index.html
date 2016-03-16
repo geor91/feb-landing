@@ -7,7 +7,8 @@
     <meta name="keywords" content="taxi, online">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/styles/vendor.css">
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/style.css"><!--[if IE 8]>
+    <script src="assets/scripts/ie.js"></script><!--<![endif]-->
   </head>
   <body>
     <div class="main-wrap">
@@ -18,9 +19,9 @@
             <button type="button" data-toggle="collapse" data-target="#top-navbar" aria-expanded="false" class="navbar-toggle collapsed"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             <div id="top-navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#clients">Клиентам</a></li>
-                <li><a href="#drivers">Водителям</a></li>
-                <li><a href="#partners">Партнерам</a></li>
+                <li class="active"><a href="#clients" class="js-anchor">Клиентам</a></li>
+                <li><a href="#drivers" class="js-anchor">Водителям</a></li>
+                <li><a href="#partners" class="js-anchor">Партнерам</a></li>
               </ul>
             </div>
           </nav>
@@ -49,8 +50,8 @@
               <div class="app-get-sms">
                 <div class="app-get-sms__title">Получить ссылку на телефон:</div>
                 <div class="app-get-sms__action">
-                  <input type="text" autocomplete="off" placeholder="Телефон" maxlength="18" tabindex="1" class="form-control app-get-sms__phone">
-                  <button class="app-get-sms__button btn btn-action"></button>
+                  <input type="text" autocomplete="off" placeholder="Телефон" maxlength="18" tabindex="1" data-inputmask="'mask': '(999)-999-9999'" class="form-control app-get-sms__phone inputmask">
+                  <button tabindex="2" class="app-get-sms__button btn btn-action"></button>
                 </div>
               </div>
             </div>
@@ -90,8 +91,8 @@
           </div>
         </div>
       </section>
-      <section>
-        <div id="drivers" class="action-block">
+      <section id="drivers">
+        <div class="action-block">
           <div class="container">
             <div class="row">
               <div class="action-block__content-table col-lg-7 col-md-8">
@@ -113,7 +114,7 @@
           </div>
         </div>
       </section>
-      <section>
+      <section id="partners">
         <div class="container">
           <div class="section-title section-title_heading">Партнерам</div>
           <div class="row">
@@ -161,7 +162,7 @@
           </div>
         </div>
       </section>
-      <section class="sticky-section">
+      <section>
         <div class="action-block text-center">
           <div class="col-md-6 center-block">
             <div class="block__title block__title_lg">Быстрый старт</div>
@@ -184,34 +185,23 @@
           <div class="modal-window__title">Заявка на регистрацию водителя</div>
         </div>
         <div class="modal-window__body">
-          <form>
-            <div class="form-group form-group-lg">
-              <label>Регион</label>
-              <div class="custom-select">
-                <select type="text" class="form-control">
-                  <option>Регион 1</option>
-                  <option>Регион 2</option>
-                  <option>Регион 3</option>
-                </select>
-              </div>
-            </div>
+          <form class="ajax-form">
             <div class="form-group form-group-lg">
               <label>Населенный пункт</label>
               <div class="custom-select">
-                <select type="text" class="form-control">
-                  <option>Пункт 1</option>
-                  <option>Пункт 2</option>
-                  <option>Пункт 3</option>
+                <select type="text" name="userLocality" class="form-control">
+                  <option>Владикавказ</option>
+                  <option>Нальчик</option>
                 </select>
               </div>
             </div>
             <div class="form-group form-group-lg">
               <label>ФИО</label>
-              <input type="text" class="form-control">
+              <input type="text" name="userName" class="form-control">
             </div>
             <div class="form-group form-group-lg">
               <label>Телефон</label>
-              <input type="text" class="form-control">
+              <input type="text" , name="userPhone" data-inputmask="'mask': '(999)-999-9999'" class="form-control inputmask">
             </div>
             <button class="btn btn-action action-block__button">Регистрация</button>
           </form>
@@ -227,11 +217,11 @@
           <form>
             <div class="form-group form-group-lg">
               <label>ФИО</label>
-              <input type="text" class="form-control">
+              <input type="text" name="userName" class="form-control">
             </div>
             <div class="form-group form-group-lg">
               <label>Телефон</label>
-              <input type="text" class="form-control">
+              <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" class="form-control inputmask">
             </div>
             <button class="btn btn-action action-block__button">Отправить</button>
           </form>

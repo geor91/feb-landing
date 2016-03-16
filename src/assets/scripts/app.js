@@ -1,4 +1,2 @@
-//= ./partials/inits.js
 //= ./partials/events.js
-// ./partials/expand.js
-// ./partials/modal.js
+//= ./partials/inits.js

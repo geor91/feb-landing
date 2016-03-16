@@ -34,27 +34,28 @@ body {
 
 	section {
 		position: relative;
-		@include rem(margin-bottom, 55px);
+		// @include rem(margin-bottom, 55px);
+		@include rem(padding, 55px 0);
 		@extend .clearfix;
 
+		&:first-of-type {
+			padding-top: 0;
+		}
 		&:nth-child(2n+1) {
 			background-color: #f9f9f9;
 		}
-		&.sticky-section {
-			margin-bottom: 0;
-		}
 	}
 		.section-title {
-				@include font-family(os600);
-				font-size: 15px;
-				color: $color-gray-3;
-				text-transform: uppercase;
+			@include font-family(os600);
+			font-size: 15px;
+			color: $color-gray-3;
+			text-transform: uppercase;
 
-				@include viewport('max-width: 480px') {
-					text-align: center;
-				}
+			@include viewport('max-width: 480px') {
+				text-align: center;
 			}
-				.section-title_heading {
-					@include rem(margin-bottom, 40px);
-				}
+		}
+			.section-title_heading {
+				@include rem(margin-bottom, 40px);
+			}
 }

@@ -6,6 +6,22 @@ header {
 			position: static;
 		}
 	}
+	&.fixed-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding-top: 0;
+		background: #fff;
+		border-bottom: 1px solid #ccc;
+		box-shadow: 0 1px 8px rgba(0,0,0, .3);
+		z-index: 1;
+		transition: all .3s;
+
+		.site-logo {
+			bottom: 10px;
+		}
+	}
 
 	.site-logo {
 		position: absolute;
@@ -63,7 +79,8 @@ header {
 					text-transform: uppercase;
 
 					&:hover,
-					&:focus {
+					&:focus,
+					&.active {
 						background: none;
 						color: #000;
 					}

@@ -4,27 +4,30 @@
 		.modal-window__head
 			.modal-window__title Заявка на регистрацию водителя
 		.modal-window__body
-			form
-				.form-group.form-group-lg
-					label Регион
-					.custom-select
-						select(type="text", class="form-control")
-							option Регион 1
-							option Регион 2
-							option Регион 3
+			form.ajax-form
+				//- .form-group.form-group-lg
+				//- 	label Регион
+				//- 	.custom-select
+				//- 		select(type="text", class="form-control", name="userRegion")
+				//- 			option Регион 1
+				//- 			option Регион 2
+				//- 			option Регион 3
 				.form-group.form-group-lg
 					label Населенный пункт
 					.custom-select
-						select(type="text", class="form-control")
-							option Пункт 1
-							option Пункт 2
-							option Пункт 3
+						select(type="text", class="form-control", name="userLocality")
+							option Владикавказ
+							option Нальчик
 				.form-group.form-group-lg
 					label ФИО
-					input(type="text", class="form-control")
+					input(type="text", class="form-control", name="userName")
 				.form-group.form-group-lg
 					label Телефон
-					input(type="text", class="form-control")
+					input(
+						type="text",,
+						name="userPhone"
+						class="form-control inputmask",
+						data-inputmask="'mask': '(999)-999-9999'")
 				button.btn.btn-action.action-block__button Регистрация
 
 #quickStart.modal.fade
@@ -36,8 +39,12 @@
 			form
 				.form-group.form-group-lg
 					label ФИО
-					input(type="text", class="form-control")
+					input(type="text", class="form-control", name="userName")
 				.form-group.form-group-lg
 					label Телефон
-					input(type="text", class="form-control")
+					input(
+						type="text",
+						name="userPhone"
+						class="form-control inputmask",
+						data-inputmask="'mask': '(999)-999-9999'")
 				button.btn.btn-action.action-block__button Отправить

@@ -49,7 +49,7 @@
 // HERO BLOCK
 	.hero-block {
 		@include rem(height, 474px); // bg image height
-		@include rem(margin-bottom, 25px);
+		// @include rem(margin-bottom, 25px);
 		background: url(/assets/images/for-clients-bg.jpg) 0 0 no-repeat;
 
 		@include viewport('max-width: 767px') {
@@ -126,10 +126,10 @@
 
 // DRIVER REGISTRATION BLOCK
 	.action-block {
-		@include rem(padding, 60px 0);
-		@include viewport('max-width: 480px') {
-			text-align: center;
-		}
+		// @include rem(padding, 60px 0);
+		// @include viewport('max-width: 480px') {
+		// 	text-align: center;
+		// }
 	}
 	.action-block__content-table {
 		display: table;
@@ -185,7 +185,9 @@
 
 // PHONE-APPS
 	.phone-apps-container {
-		@include rem(margin, 25px auto 50px);
+		// @include rem(margin, 25px auto 50px);
+		@include rem(padding-top, 25px);
+		@include rem(padding-bottom, 50px);
 		@include viewport('max-width: 1199px') {
 			text-align: center;
 		}
@@ -265,8 +267,7 @@
 			vertical-align: top;
 			padding: 13px 17px;
 			border-color: $color-gray-4;
-			font-size: 13px;
-			color: #7e9b9b;
+			// font-size: 13px;
 		}
 		.app-get-sms__button {
 			position: absolute;

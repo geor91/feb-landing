@@ -120,7 +120,7 @@
 
 	// images
 		gulp.task('images', function() {
-			gulp.src(paths.src.images)
+			return gulp.src(paths.src.images)
 				.pipe(newer(paths.build.images))
 				.pipe(imagemin({
 					svgoPlugins: [{removeViewBox: false}],
@@ -135,7 +135,7 @@
 
 	// fonts
 		gulp.task('fonts', function() {
-			gulp.src(paths.src.fonts)
+			return gulp.src(paths.src.fonts)
 				.pipe(newer(paths.build.fonts))
 				.pipe(gulp.dest(paths.build.fonts))
 				.pipe(bs.reload({stream: true}))
