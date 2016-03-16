@@ -18,6 +18,10 @@ header {
 		z-index: 1;
 		transition: all .3s;
 
+		.container {
+			position: relative;
+		}
+
 		.site-logo {
 			bottom: 10px;
 		}

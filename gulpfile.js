@@ -8,7 +8,6 @@
 	var newer         = require('gulp-newer');
 	var notify        = require("gulp-notify");
 	var plumber       = require('gulp-plumber');
-	var rename        = require("gulp-rename");
 	var rigger        = require('gulp-rigger');
 
 	// images
@@ -85,7 +84,6 @@
 				// .pipe(jshint())
 				// .pipe(jshint.reporter(jshintStylish))
 				.pipe(environments.production( uglify() ))
-				.pipe(environments.production( rename({suffix: '.min'}) ))
 				.pipe(gulp.dest(paths.build.scripts))
 				.pipe(bs.reload({stream: true})) //reload browser page
 		});
@@ -97,7 +95,6 @@
 				.pipe(sass())
 				.pipe(autoprefixer({browsers: ['last 30 versions']}))
 				.pipe(environments.production( cssnano() ))
-				.pipe(environments.production( rename({suffix: '.min'}) ))
 				.pipe(gulp.dest(paths.build.styles))
 				.pipe(bs.reload({stream: true}));
 		});
