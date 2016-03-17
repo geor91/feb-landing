@@ -1,6 +1,7 @@
 footer {
-	width: 100%;
+	max-width: $layout-width;
 	height: $footer-height;
+	margin: auto;
 	@include rem(padding, 45px 0)
 	background-color: #222;
 	font-size: 11px;

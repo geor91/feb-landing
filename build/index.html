@@ -44,7 +44,7 @@
             <div class="col-lg-8 col-md-12">
               <div class="phone-apps">
                 <div class="phone-apps__title">Установите бесплатное приложение:</div>
-                <div class="phone-apps__content"><span class="phone-apps__store"><a href="//play.google.com/store/apps/details?id=ru.macrobit.taxi" target="blank" alt="" class="button-store button-store_google"></a></span><span class="phone-apps__store"><a href="//itunes.apple.com/ru/app/irtaxi/id927364613" target="blank" class="button-store button-store_apple"></a></span></div>
+                <div class="phone-apps__content"><span class="phone-apps__store"><a href="//play.google.com/store/apps/details?id=ru.macrobit.taxi" target="blank" class="button-store button-store_google"></a></span><span class="phone-apps__store"><a href="//itunes.apple.com/ru/app/irtaxi/id927364613" target="blank" class="button-store button-store_apple"></a></span></div>
                 <div class="phone-apps__note">* Оператор связи может взымать плату за передачу данных в сети</div>
               </div>
               <div class="app-get-sms">
@@ -98,9 +98,9 @@
               <div class="action-block__content-table col-lg-7 col-md-8">
                 <div class="action-block__image"><img src="/assets/images/women.png" alt="women"></div>
                 <div class="action-block__content">
-                  <div class="section-title">Водителям</div>
+                  <h2 class="section-title">Водителям</h2>
                   <div class="action-block__title block__title_lg">FebTaxi гарантирует постоянный приток заказов.</div>
-                  <button data-toggle="modal" data-target="#driverReg" class="btn btn-action action-block__button">Регистрация</button>
+                  <button data-modal="#driverReg" class="btn btn-action action-block__button">Регистрация</button>
                 </div>
               </div>
               <div class="col-lg-5 col-md-4">
@@ -116,7 +116,7 @@
       </section>
       <section id="partners">
         <div class="container">
-          <div class="section-title section-title_heading">Партнерам</div>
+          <h2 class="section-title section-title_divided">Партнерам</h2>
           <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4">
               <div class="features-item_lg">
@@ -167,7 +167,7 @@
           <div class="col-md-6 center-block">
             <div class="block__title block__title_lg">Быстрый старт</div>
             <div class="block__content quick-start__content center-block">Начать бизнес с FEB просто! У нас отличное веб-приложение для диспетчеров. Вам не нужен IT-отдел или какая-либо интеграция. Наша диспетчерская всегда к вашим услугам. Присоединяйтесь к нам!</div>
-            <button data-toggle="modal" data-target="#quickStart" class="quick-start__button btn btn-action">Получить подробную информацию</button>
+            <button data-modal="#quickStart" class="quick-start__button btn btn-action">Получить подробную информацию</button>
             <div class="quick-start__additional">Мы гарантируем успех вашего бизнеса!!! <br> С Feb - Вы всегда на шаг впереди!</div>
           </div>
         </div>
@@ -179,55 +179,79 @@
         <div class="copyright">Feb taxi &copy; 2014-16</div>
       </div>
     </footer>
-    <div id="driverReg" class="modal fade">
-      <div class="modal-window"><a href="#" data-dismiss="modal" class="modal-window__close-btn"></a>
-        <div class="modal-window__head">
-          <div class="modal-window__title">Заявка на регистрацию водителя</div>
-        </div>
-        <div class="modal-window__body">
-          <form class="ajax-form">
-            <div class="form-group form-group-lg">
-              <label>Населенный пункт</label>
-              <div class="custom-select">
-                <select type="text" name="userLocality" class="form-control">
-                  <option>Владикавказ</option>
-                  <option>Нальчик</option>
-                </select>
+    <script id="driverRegTpl" type="x-template">
+      <div id="driverReg" class="modal fade">
+        <div class="ajax-form"><a href="#" data-dismiss="modal" class="ajax-form__close-btn"></a>
+          <div class="ajax-form__head">
+            <div class="ajax-form__title">Заявка на регистрацию водителя</div>
+          </div>
+          <div class="ajax-form__body">
+            <div class="ajax-form__fieldset">
+              <form class="js-ajax-form">
+                <div class="form-group form-group-lg">
+                  <label>Населенный пункт</label>
+                  <div class="custom-select">
+                    <select name="userLocality" tabindex="100" autofocus class="form-control">
+                      <option>Владикавказ</option>
+                      <option>Нальчик</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group form-group-lg">
+                  <label>ФИО</label>
+                  <input type="text" name="userName" tabindex="101" class="form-control">
+                </div>
+                <div class="form-group form-group-lg">
+                  <label>Телефон</label>
+                  <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" tabindex="103" class="form-control inputmask">
+                </div>
+                <div class="ajax-form__footer">
+                  <button tabindex="104" class="btn btn-action action-block__button">Регистрация</button>
+                </div>
+              </form>
+            </div>
+            <div class="ajax-form__fieldset ajax-form__fieldset_complete">
+              <div class="centered-content"><img src="/assets/images/mark.png" alt="Заявка отправлена"></div>
+              <div class="ajax-form__footer">
+                <button data-dismiss="modal" tabindex="104" class="btn btn-default action-block__button">Закрыть</button>
               </div>
             </div>
-            <div class="form-group form-group-lg">
-              <label>ФИО</label>
-              <input type="text" name="userName" class="form-control">
-            </div>
-            <div class="form-group form-group-lg">
-              <label>Телефон</label>
-              <input type="text" , name="userPhone" data-inputmask="'mask': '(999)-999-9999'" class="form-control inputmask">
-            </div>
-            <button class="btn btn-action action-block__button">Регистрация</button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="quickStart" class="modal fade">
-      <div class="modal-window"><a href="#" data-dismiss="modal" class="modal-window__close-btn"></a>
-        <div class="modal-window__head">
-          <div class="modal-window__title">Обратная связь</div>
-        </div>
-        <div class="modal-window__body">
-          <form>
-            <div class="form-group form-group-lg">
-              <label>ФИО</label>
-              <input type="text" name="userName" class="form-control">
+    </script>
+    <script id="quickStartTpl" type="x-template">
+      <div id="quickStart" class="modal fade">
+        <div class="ajax-form"><a href="#" data-dismiss="modal" class="ajax-form__close-btn"></a>
+          <div class="ajax-form__head">
+            <div class="ajax-form__title">Обратная связь</div>
+          </div>
+          <div class="ajax-form__body">
+            <div class="ajax-form__fieldset">
+              <form class="js-ajax-form">
+                <div class="form-group form-group-lg">
+                  <label>ФИО</label>
+                  <input type="text" name="userName" tabindex="201" autofocus class="form-control">
+                </div>
+                <div class="form-group form-group-lg">
+                  <label>Телефон</label>
+                  <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" tabindex="202" class="form-control inputmask">
+                </div>
+                <div class="ajax-form__footer">
+                  <button tabindex="203" class="btn btn-action action-block__button">Отправить</button>
+                </div>
+              </form>
             </div>
-            <div class="form-group form-group-lg">
-              <label>Телефон</label>
-              <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" class="form-control inputmask">
+            <div class="ajax-form__fieldset ajax-form__fieldset_complete">
+              <div class="centered-content"><img src="/assets/images/mark.png" alt="Заявка отправлена"></div>
+              <div class="ajax-form__footer">
+                <button data-dismiss="modal" tabindex="203" class="btn btn-default action-block__button">Закрыть</button>
+              </div>
             </div>
-            <button class="btn btn-action action-block__button">Отправить</button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </script>
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="assets/scripts/vendor.js"></script>
     <script src="assets/scripts/app.js"></script>

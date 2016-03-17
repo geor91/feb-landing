@@ -1,50 +1,63 @@
-#driverReg.modal.fade
-	.modal-window
-		a.modal-window__close-btn(href="#", data-dismiss="modal")
-		.modal-window__head
-			.modal-window__title Заявка на регистрацию водителя
-		.modal-window__body
-			form.ajax-form
-				//- .form-group.form-group-lg
-				//- 	label Регион
-				//- 	.custom-select
-				//- 		select(type="text", class="form-control", name="userRegion")
-				//- 			option Регион 1
-				//- 			option Регион 2
-				//- 			option Регион 3
-				.form-group.form-group-lg
-					label Населенный пункт
-					.custom-select
-						select(type="text", class="form-control", name="userLocality")
-							option Владикавказ
-							option Нальчик
-				.form-group.form-group-lg
-					label ФИО
-					input(type="text", class="form-control", name="userName")
-				.form-group.form-group-lg
-					label Телефон
-					input(
-						type="text",,
-						name="userPhone"
-						class="form-control inputmask",
-						data-inputmask="'mask': '(999)-999-9999'")
-				button.btn.btn-action.action-block__button Регистрация
+script#driverRegTpl(type="x-template")
+	#driverReg.modal.fade
+		.ajax-form
+			a.ajax-form__close-btn(href="#", data-dismiss="modal")
+			.ajax-form__head
+				.ajax-form__title Заявка на регистрацию водителя
+			.ajax-form__body
+				.ajax-form__fieldset
+					form.js-ajax-form
+						.form-group.form-group-lg
+							label Населенный пункт
+							.custom-select
+								select(class="form-control", name="userLocality", tabindex="100", autofocus)
+									option Владикавказ
+									option Нальчик
+						.form-group.form-group-lg
+							label ФИО
+							input(type="text", class="form-control", name="userName", tabindex="101")
+						.form-group.form-group-lg
+							label Телефон
+							input(
+								type="text",
+								name="userPhone"
+								class="form-control inputmask",
+								data-inputmask="'mask': '(999)-999-9999'",
+								tabindex="103")
+						.ajax-form__footer
+							button.btn.btn-action.action-block__button(tabindex="104") Регистрация
 
-#quickStart.modal.fade
-	.modal-window
-		a.modal-window__close-btn(href="#", data-dismiss="modal")
-		.modal-window__head
-			.modal-window__title Обратная связь
-		.modal-window__body
-			form
-				.form-group.form-group-lg
-					label ФИО
-					input(type="text", class="form-control", name="userName")
-				.form-group.form-group-lg
-					label Телефон
-					input(
-						type="text",
-						name="userPhone"
-						class="form-control inputmask",
-						data-inputmask="'mask': '(999)-999-9999'")
-				button.btn.btn-action.action-block__button Отправить
+				.ajax-form__fieldset.ajax-form__fieldset_complete
+					.centered-content
+						img(src="/assets/images/mark.png", alt="Заявка отправлена")
+					.ajax-form__footer
+							button.btn.btn-default.action-block__button(data-dismiss="modal", tabindex="104") Закрыть
+
+script#quickStartTpl(type="x-template")
+	#quickStart.modal.fade
+		.ajax-form
+			a.ajax-form__close-btn(href="#", data-dismiss="modal")
+			.ajax-form__head
+				.ajax-form__title Обратная связь
+			.ajax-form__body
+				.ajax-form__fieldset
+					form.js-ajax-form
+						.form-group.form-group-lg
+							label ФИО
+							input(type="text", class="form-control", name="userName", tabindex="201", autofocus)
+						.form-group.form-group-lg
+							label Телефон
+							input(
+								type="text",
+								name="userPhone",
+								class="form-control inputmask",
+								data-inputmask="'mask': '(999)-999-9999'",
+								tabindex="202")
+						.ajax-form__footer
+							button.btn.btn-action.action-block__button(tabindex="203") Отправить
+
+				.ajax-form__fieldset.ajax-form__fieldset_complete
+					.centered-content
+						img(src="/assets/images/mark.png", alt="Заявка отправлена")
+					.ajax-form__footer
+							button.btn.btn-default.action-block__button(data-dismiss="modal", tabindex="203") Закрыть

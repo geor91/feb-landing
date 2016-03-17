@@ -2,7 +2,9 @@
 	@include rem(margin, 25px auto);
 }
 .centered-content {
+	height: 100%;
 	font-size: 0;
+	text-align: center;
 
 	&:before {
 		content: "";
@@ -17,9 +19,9 @@
 		vertical-align: middle;
 		@include rem(font-size, 14px);
 		float: none;
+		text-align: left;
 	}
 }
-
 .custom-select {
 	position: relative;
 

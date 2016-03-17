@@ -1,6 +1,6 @@
 $modal-window-W: 580px;
 
-.modal-window {
+.ajax-form {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -25,15 +25,15 @@ $modal-window-W: 580px;
 		transform: translate(0,0);
 	}
 }
-.modal-window__title {
-	width: 70%;
+.ajax-form__title {
+	// width: 70%;
 	@extend .block__title;
 	@extend .block__title_lg;
 	@include viewport ('max-width: #{$modal-window-W}') {
-		width: auto;
+		// width: auto;
 	}
 }
-.modal-window__close-btn {
+.ajax-form__close-btn {
 	position: absolute;
 	top: 19px;
 	right: 19px;
@@ -41,10 +41,41 @@ $modal-window-W: 580px;
 	height: 20px;
 	background: url(../images/icons/icon-close.png) left top no-repeat;
 	cursor: pointer;
-	opacity: .8;
-	transition: opacity .3s;
+	opacity: .7;
 
 	&:hover {
 		opacity: 1;
+	}
+}
+
+.ajax-form__body {
+	position: relative;
+}
+.ajax-form__fieldset {
+	display: inline-block;
+	width: 100%;
+	padding-bottom: 44+20px;
+	vertical-align: middle;
+	background: #fff;
+}
+.ajax-form__fieldset_complete {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+}
+.ajax-form__footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.ajax-form_completed {
+	.ajax-form__fieldset {
+		visibility: hidden;
+	}
+	.ajax-form__fieldset_complete {
+		display: block;
+		visibility: visible;
 	}
 }
