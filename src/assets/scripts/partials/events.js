@@ -1,8 +1,8 @@
 $(function(){
+	// CUSTOM MODAL FORMS
 	var febModal = {
-		init: function (targetId, targetTpl) {
+		init: function (targetId) {
 			this.targetId = targetId;
-			this.targetHtmlId = $(targetId+'Tpl');
 			this.targetHtml = $(targetId+'Tpl').html();
 			this.loadHtml();
 			this.initEvents();
@@ -18,13 +18,20 @@ $(function(){
 
 		initEvents: function() {
 			$(this.targetId).modal('show');
+
+			// inputmask init
+			$(this.targetId + ' .inputmask').inputmask();
+
+			// close modal event
 			$(this.targetId).on('hidden.bs.modal', function () {
 				febModal.cleanHtml();
 			});
 
-			$('.js-ajax-form').on('submit', function(e) {
+			// ajax form submit event
+			$(this.targetId + ' form.js-ajax-form').on('submit', function(e) {
 				e.preventDefault();
 
+				var formWrap = $(this).parents('.ajax-form');
 				var formData = $(this).serializeArray();
 				var jsonData = {};
 
@@ -37,21 +44,23 @@ $(function(){
 					url: '/taxi/public/statement?native=true',
 					type: "POST",
 					data: JSON.stringify(jsonData),
-					contentType: "application/json; charset=utf-8",
-					dataType: "json"
-				}).done(function() {
-					$(this).parents('.ajax-form').addClass("ajax-form_completed");
+					contentType: "application/json; charset=utf-8"
+				})
+				.done(function() {
+					$(formWrap).addClass("ajax-form_completed");
+				})
+				.fail(function() {
+					alert('Проблемы с соединением. Заявка не была отправлена.');
 				});
+
 			});
 		},
 	};
 
 	// BOOTSTRAP CUSTOM MODALS
 		$('[data-modal]').click(function(e) {
-			var targetId  = $(this).data('modal'),
-			    targetTpl = targetId + 'Tpl';
-
-			febModal.init(targetId, targetTpl);
+			var targetId  = $(this).data('modal');
+			febModal.init(targetId);
 		});
 
 	// SMOOTH SCROLL TO ANCHORS
@@ -86,6 +95,24 @@ $(function(){
 			else {
 				header.removeClass('fixed-header');
 			}
+		});
+
+	// SEND SMS FORM
+		$('#sendSmsBtn').click(function(e) {
+			var phoneNum = '7' + $('#sendSmsPhone').inputmask('unmaskedvalue'),
+			    url      = '/taxi/rest/public/link/' + phoneNum;
+
+			$.ajax({
+				url: url,
+				type: 'POST'
+			})
+			.done(function() {
+				alert('Сообщение отправлено.');
+			})
+			.fail(function() {
+				alert('Проблемы с соединением. Сообщение не отправлено.');
+			});
+
 		});
 
 });

@@ -50,8 +50,8 @@
               <div class="app-get-sms">
                 <div class="app-get-sms__title">Получить ссылку на телефон:</div>
                 <div class="app-get-sms__action">
-                  <input type="text" autocomplete="off" placeholder="Телефон" maxlength="18" tabindex="1" data-inputmask="'mask': '(999)-999-9999'" class="form-control app-get-sms__phone inputmask">
-                  <button tabindex="2" class="app-get-sms__button btn btn-action"></button>
+                  <input id="sendSmsPhone" type="text" autocomplete="off" placeholder="Телефон" maxlength="18" tabindex="1" data-inputmask="'mask': '(999)-999-9999'" class="form-control app-get-sms__phone inputmask">
+                  <button id="sendSmsBtn" tabindex="2" class="app-get-sms__button btn btn-action"></button>
                 </div>
               </div>
             </div>
@@ -189,21 +189,21 @@
             <div class="ajax-form__fieldset">
               <form class="js-ajax-form">
                 <div class="form-group form-group-lg">
-                  <label>Населенный пункт</label>
+                  <label for="userLocality">Населенный пункт</label>
                   <div class="custom-select">
-                    <select name="userLocality" tabindex="100" autofocus class="form-control">
+                    <select name="userLocality" tabindex="100" autofocus required class="form-control">
                       <option>Владикавказ</option>
                       <option>Нальчик</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group form-group-lg">
-                  <label>ФИО</label>
-                  <input type="text" name="userName" tabindex="101" class="form-control">
+                  <label for="userName">ФИО</label>
+                  <input type="text" name="userName" tabindex="101" required class="form-control">
                 </div>
                 <div class="form-group form-group-lg">
-                  <label>Телефон</label>
-                  <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" tabindex="103" class="form-control inputmask">
+                  <label for="userPhone">Телефон</label>
+                  <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" tabindex="103" required class="form-control inputmask">
                 </div>
                 <div class="ajax-form__footer">
                   <button tabindex="104" class="btn btn-action action-block__button">Регистрация</button>
@@ -230,12 +230,12 @@
             <div class="ajax-form__fieldset">
               <form class="js-ajax-form">
                 <div class="form-group form-group-lg">
-                  <label>ФИО</label>
-                  <input type="text" name="userName" tabindex="201" autofocus class="form-control">
+                  <label for="userName">ФИО</label>
+                  <input type="text" name="userName" tabindex="201" autofocus required class="form-control">
                 </div>
                 <div class="form-group form-group-lg">
-                  <label>Телефон</label>
-                  <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" tabindex="202" class="form-control inputmask">
+                  <label for="userPhone">Телефон</label>
+                  <input type="text" name="userPhone" data-inputmask="'mask': '(999)-999-9999'" tabindex="202" required class="form-control inputmask">
                 </div>
                 <div class="ajax-form__footer">
                   <button tabindex="203" class="btn btn-action action-block__button">Отправить</button>

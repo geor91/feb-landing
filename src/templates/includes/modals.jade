@@ -8,22 +8,33 @@ script#driverRegTpl(type="x-template")
 				.ajax-form__fieldset
 					form.js-ajax-form
 						.form-group.form-group-lg
-							label Населенный пункт
+							label(for="userLocality") Населенный пункт
 							.custom-select
-								select(class="form-control", name="userLocality", tabindex="100", autofocus)
+								select(
+									class="form-control",
+									name="userLocality",
+									tabindex="100",
+									autofocus,
+									required)
 									option Владикавказ
 									option Нальчик
 						.form-group.form-group-lg
-							label ФИО
-							input(type="text", class="form-control", name="userName", tabindex="101")
+							label(for="userName") ФИО
+							input(
+								type="text",
+								class="form-control",
+								name="userName",
+								tabindex="101",
+								required)
 						.form-group.form-group-lg
-							label Телефон
+							label(for="userPhone") Телефон
 							input(
 								type="text",
 								name="userPhone"
 								class="form-control inputmask",
 								data-inputmask="'mask': '(999)-999-9999'",
-								tabindex="103")
+								tabindex="103",
+								required)
 						.ajax-form__footer
 							button.btn.btn-action.action-block__button(tabindex="104") Регистрация
 
@@ -43,16 +54,23 @@ script#quickStartTpl(type="x-template")
 				.ajax-form__fieldset
 					form.js-ajax-form
 						.form-group.form-group-lg
-							label ФИО
-							input(type="text", class="form-control", name="userName", tabindex="201", autofocus)
+							label(for="userName") ФИО
+							input(
+								type="text",
+								class="form-control",
+								name="userName",
+								tabindex="201",
+								autofocus,
+								required)
 						.form-group.form-group-lg
-							label Телефон
+							label(for="userPhone") Телефон
 							input(
 								type="text",
 								name="userPhone",
 								class="form-control inputmask",
 								data-inputmask="'mask': '(999)-999-9999'",
-								tabindex="202")
+								tabindex="202",
+								required)
 						.ajax-form__footer
 							button.btn.btn-action.action-block__button(tabindex="203") Отправить
 
