@@ -1,4 +1,35 @@
 $(function(){
+	// BOOTSTRAP CUSTOM MODALS
+		$('[data-modal]').click(function(e) {
+			var targetId  = $(this).data('modal');
+			febModal.init(targetId);
+		});
+
+	// SMOOTH SCROLL TO ANCHORS
+		$(".js-anchor").click(function (e) {
+			e.preventDefault();
+
+			var targetId     = $(this).attr('href').slice(1),
+			    targetY      = document.getElementById(targetId).offsetTop,
+			    headerH      = $('header').outerHeight(),
+			    scrollPos    = targetY - headerH;
+
+			$('body,html').animate({scrollTop: scrollPos}, 600);
+		});
+
+	// FIXED HEADER ON SCROLL
+		$(window).scroll(function(){
+			var header       = $('header'),
+			    headerH      = header.outerHeight(),
+			    windowScroll = $(window).scrollTop();
+
+			if (windowScroll > (headerH*2)) {
+				header.addClass('fixed-header');
+			}
+			else {
+				header.removeClass('fixed-header');
+			}
+		});
 	// CUSTOM MODAL FORMS
 		var febModal = {
 			init: function (targetId) {
@@ -57,53 +88,49 @@ $(function(){
 			},
 		};
 
-	// BOOTSTRAP CUSTOM MODALS
-		$('[data-modal]').click(function(e) {
-			var targetId  = $(this).data('modal');
-			febModal.init(targetId);
-		});
-
-	// SMOOTH SCROLL TO ANCHORS
-		$(".js-anchor").click(function (e) {
-			e.preventDefault();
-
-			var targetId     = $(this).attr('href').slice(1),
-			    targetY      = document.getElementById(targetId).offsetTop,
-			    headerH      = $('header').outerHeight(),
-			    scrollPos    = targetY - headerH;
-
-			$('body,html').animate({scrollTop: scrollPos}, 600);
-		});
-
-	// FIXED HEADER ON SCROLL
-		$(window).scroll(function(){
-			var header       = $('header'),
-			    headerH      = header.outerHeight(),
-			    windowScroll = $(window).scrollTop();
-
-			if (windowScroll > (headerH*2)) {
-				header.addClass('fixed-header');
-			}
-			else {
-				header.removeClass('fixed-header');
-			}
-		});
-
 	// SEND SMS FORM
-		$('#sendSmsBtn').click(function(e) {
-			var phoneNum = '7' + $('#sendSmsPhone').inputmask('unmaskedvalue'),
-			    url      = '/taxi/rest/public/link/' + phoneNum;
+		$('#getDLink').submit(function(e) {
+			e.preventDefault();
+			var self       = $('#getDLink'),
+					formInput  = self.children('#sendSmsPhone'),
+					formSubmit = self.children('#sendSmsBtn'),
+					formResult = self.children('.app-get-sms__status'),
+			    formData   = formInput.inputmask('unmaskedvalue');
 
-			$.ajax({
-				url: url,
-				type: 'POST'
-			})
-			.done(function() {
-				alert('Сообщение отправлено.');
-			})
-			.fail(function() {
-				alert('Проблемы с соединением. Сообщение не отправлено.');
-			});
+			if (formData) {
+				// phone num validation
+				if (formData.length != 10) {
+					formSubmit.attr('disabled', 'disabled');
+					formResult.addClass('alert-danger')
+						.text('Неверный формат.').show();
+					setTimeout(function() {
+						formResult.removeClass('alert-danger').hide().text('');
+						formSubmit.removeAttr('disabled');
+					}, 3000);
+					return false;
+				}
+
+				var url = '/taxi/rest/public/link/' + '7' + formData;
+
+				$.ajax({
+					url: url,
+					type: 'POST'
+				})
+				.done(function() {
+					formInput.val('');
+					formSubmit.attr('disabled', 'disabled');
+					formResult.addClass('alert-success')
+						.text('Сообщение отправлено.').show();
+					setTimeout(function() {
+						formResult.removeClass('alert-success').hide().text('');
+						formSubmit.removeAttr('disabled');
+					}, 5000);
+				})
+				.fail(function() {
+					formResult.addClass('alert-danger')
+						.text('Сообщение не отправлено.').show();
+				});
+			}
 
 		});
 

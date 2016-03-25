@@ -22,9 +22,10 @@ section
 
 				.app-get-sms
 					.app-get-sms__title Получить ссылку на телефон:
-					.app-get-sms__action
-						//- .app-get-sms__phone-plus +
-						input#sendSmsPhone.form-control.app-get-sms__phone(
+					form#getDLink.app-get-sms__action
+						.app-get-sms__phone-plus +7
+						input.form-control.app-get-sms__phone(
+							id="sendSmsPhone",
 							type="text",
 							class="inputmask",
 							autocomplete="off",
@@ -33,6 +34,7 @@ section
 							tabindex="1",
 							data-inputmask="'mask': '(999)-999-9999'")
 						button#sendSmsBtn.app-get-sms__button.btn.btn-action(tabindex="2")
+						.app-get-sms__status(title='Нажмите, чтобы закрыть.')
 
 	.container.features-block
 		.row

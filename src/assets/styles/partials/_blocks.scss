@@ -259,7 +259,19 @@
 			color: $color-gray-2;			
 		}
 		.app-get-sms__action {
-			padding-right: 64px;
+			position: relative;
+			padding-right: 64px; // submit btn width
+		}
+		.app-get-sms__phone-plus {
+			position: absolute;
+			width: 42px;
+			top: 1px;
+			left: 1px;
+			bottom: 1px;
+			line-height: 44px;
+			text-align: center;
+			background: #eee;
+			color: $color-gray-2;
 		}
 		.app-get-sms__phone {
 			display: inline-block;
@@ -268,7 +280,9 @@
 			vertical-align: top;
 			padding: 13px 17px;
 			border-color: $color-gray-4;
-			// font-size: 13px;
+		}
+		.app-get-sms__phone-plus + .app-get-sms__phone {
+			padding-left: 50px;
 		}
 		.app-get-sms__button {
 			position: absolute;
@@ -276,11 +290,22 @@
 			right: 0;
 			width: 52px;
 			height: 44px;
-			// margin-left: 5px;
 			vertical-align: top;
 			background-image: url(../images/icons/icon-check.png);
 			background-position: center;
 			background-repeat: no-repeat;
+		}
+		.app-get-sms__status {
+			display: none;
+			position: absolute;
+			top: 0;
+			right: 64px;
+			bottom: 0;
+			left: 0;
+			line-height: 44px;
+			margin: 0;
+			padding: 0 10px;
+			@extend .alert;
 		}
 
 // FEATUERES BLOCK COMMON STYLES
