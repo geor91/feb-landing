@@ -1,61 +1,61 @@
 $(function(){
 	// CUSTOM MODAL FORMS
-	var febModal = {
-		init: function (targetId) {
-			this.targetId = targetId;
-			this.targetHtml = $(targetId+'Tpl').html();
-			this.loadHtml();
-			this.initEvents();
-		},
+		var febModal = {
+			init: function (targetId) {
+				this.targetId = targetId;
+				this.targetHtml = $(targetId+'Tpl').html();
+				this.appendModal();
+				this.initEvents();
+			},
 
-		loadHtml: function () {
-			$('body').append(this.targetHtml);
-		},
+			appendModal: function () {
+				$('body').append(this.targetHtml);
+			},
 
-		cleanHtml: function () {
-			$(this.targetId).remove();
-		},
+			removeModal: function () {
+				$(this.targetId).remove();
+			},
 
-		initEvents: function() {
-			$(this.targetId).modal('show');
+			initEvents: function() {
+				$(this.targetId).modal('show');
 
-			// inputmask init
-			$(this.targetId + ' .inputmask').inputmask();
+				// mask for inputs
+				$(this.targetId + ' .inputmask').inputmask();
 
-			// close modal event
-			$(this.targetId).on('hidden.bs.modal', function () {
-				febModal.cleanHtml();
-			});
-
-			// ajax form submit event
-			$(this.targetId + ' form.js-ajax-form').on('submit', function(e) {
-				e.preventDefault();
-
-				var formWrap = $(this).parents('.ajax-form');
-				var formData = $(this).serializeArray();
-				var jsonData = {};
-
-				for (var i in formData) {
-					var item = formData[i];
-					jsonData[item.name] = item.value;
-				}
-
-				$.ajax({
-					url: '/taxi/public/statement?native=true',
-					type: "POST",
-					data: JSON.stringify(jsonData),
-					contentType: "application/json; charset=utf-8"
-				})
-				.done(function() {
-					$(formWrap).addClass("ajax-form_completed");
-				})
-				.fail(function() {
-					alert('Проблемы с соединением. Заявка не была отправлена.');
+				// close modal
+				$(this.targetId).on('hidden.bs.modal', function () {
+					febModal.removeModal();
 				});
 
-			});
-		},
-	};
+				// ajax form submit
+				$(this.targetId + ' form.js-ajax-form').on('submit', function(e) {
+					e.preventDefault();
+
+					var formWrap = $(this).parents('.ajax-form');
+					var formData = $(this).serializeArray();
+					var jsonData = {};
+
+					for (var i in formData) {
+						var item = formData[i];
+						jsonData[item.name] = item.value;
+					}
+
+					$.ajax({
+						url: '/taxi/public/statement?native=true',
+						type: "POST",
+						data: JSON.stringify(jsonData),
+						contentType: "application/json; charset=utf-8"
+					})
+					.done(function() {
+						$(formWrap).addClass("ajax-form_completed");
+					})
+					.fail(function() {
+						alert('Проблемы с соединением. Заявка не была отправлена.');
+					});
+
+				});
+			},
+		};
 
 	// BOOTSTRAP CUSTOM MODALS
 		$('[data-modal]').click(function(e) {
@@ -67,18 +67,10 @@ $(function(){
 		$(".js-anchor").click(function (e) {
 			e.preventDefault();
 
-			var targetId     = $(this).attr('href'),
-			    targetY      = $(targetId).offset().top,
-			    headerH      = $('header').outerHeight();
-
-			// т.к. высота хедера в обычном состоянии (headerH) не равна
-			// высоте фиксированного хедера (fixedHeaderH)
-			// то и вертикальное положение блоков,
-			// до которых нужно отскролить страницу соответственно отличается.
-
-			var fixedHeaderH = 66, // высота фиксированного хедера
-			    headersDiff  = headerH-fixedHeaderH, // разница между высотами хедеров
-			    scrollPos    = targetY-headerH-headersDiff; // на сколько нужно отскролить страницу
+			var targetId     = $(this).attr('href').slice(1),
+			    targetY      = document.getElementById(targetId).offsetTop,
+			    headerH      = $('header').outerHeight(),
+			    scrollPos    = targetY - headerH;
 
 			$('body,html').animate({scrollTop: scrollPos}, 600);
 		});
@@ -89,7 +81,7 @@ $(function(){
 			    headerH      = header.outerHeight(),
 			    windowScroll = $(window).scrollTop();
 
-			if (windowScroll > (headerH + 100)) {
+			if (windowScroll > (headerH*2)) {
 				header.addClass('fixed-header');
 			}
 			else {

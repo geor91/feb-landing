@@ -1,6 +1,7 @@
 header {
 	position: relative;
-	@include rem(padding-top, 45px);
+	@include rem(margin-top, 35px);
+	@include rem(padding-top, 10px);
 	@include viewport('max-width: 767px') {
 		.container {
 			position: static;
@@ -11,20 +12,19 @@ header {
 		top: 0;
 		left: 0;
 		width: 100%;
-		padding-top: 0;
 		background: #fff;
+		margin: 0;
 		border-bottom: 1px solid #ccc;
 		box-shadow: 0 1px 8px rgba(0,0,0, .3);
 		z-index: 1;
-		transition: all .3s;
+		transition: all .3s, margin-top .01s; // margin-top no transition
 
 		.container {
 			position: relative;
 		}
-
 		.site-logo {
 			left: 80px;
-			bottom: 10px;
+			bottom: 7px;
 		}
 	}
 
@@ -60,6 +60,7 @@ header {
 				background: #fff;
 				text-align: right;
 				z-index: 1;
+				box-shadow: -3px 4px 6px 0 rgba(0,0,0, .2);
 			}
 		}
 

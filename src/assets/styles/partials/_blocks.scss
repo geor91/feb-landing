@@ -50,10 +50,10 @@
 	.hero-block {
 		@include rem(height, 474px); // bg image height
 		// @include rem(margin-bottom, 25px);
-		background: url(/assets/images/for-clients-bg.jpg) 0 0 no-repeat;
+		background: #333 url(../images/for-clients-bg.jpg) 0 0 no-repeat;
 
 		@include viewport('max-width: 767px') {
-			background: url(/assets/images/for-clients-bg.jpg) center no-repeat;				
+			background-position: center;
 			background-size: cover;
 
 			img {

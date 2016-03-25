@@ -81,8 +81,8 @@
 			gulp.src(paths.src.scripts)
 				.pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
 				.pipe(rigger())
-				// .pipe(jshint())
-				// .pipe(jshint.reporter(jshintStylish))
+				.pipe(jshint())
+				.pipe(jshint.reporter(jshintStylish))
 				.pipe(environments.production( uglify() ))
 				.pipe(gulp.dest(paths.build.scripts))
 				.pipe(bs.reload({stream: true})) //reload browser page
@@ -162,5 +162,5 @@
 		gulp.task('prod', ['set-env', 'build']);
 /* ----------- /TASKS -------------- */
 
-gulp.task('build', ['images', 'templates', 'styles', 'scripts', 'fonts']);
+gulp.task('build', ['clean', 'images', 'templates', 'styles', 'scripts', 'fonts']);
 gulp.task('default', ['serve', 'watch']);
