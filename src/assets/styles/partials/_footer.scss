@@ -6,28 +6,4 @@ footer {
 	background-color: #222;
 	font-size: 11px;
 	color: $color-gray-4;
-
-	.address {
-		width: 50%;
-		float: left;
-	}
-
-	.copyright {
-		width: 50%;
-		float: left;
-		text-align: right;
-	}
-
-	@include viewport('max-width: 480px') {
-		.address {
-			width: 100%;
-		}
-
-		.copyright {
-			width: 100%;
-			margin-bottom: 10px;
-			text-align: left;
-		}
-
-	}
 }
