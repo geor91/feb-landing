@@ -49,53 +49,49 @@
 // HERO BLOCK
 	.hero-block {
 		@include rem(height, 474px); // bg image height
-		// @include rem(margin-bottom, 25px);
 		background: #333 url(../images/for-clients-bg.jpg) 0 0 no-repeat;
 
 		@include viewport('max-width: 767px') {
 			background-position: center;
 			background-size: cover;
-
-			img {
-				display: none;
-			}
 		}
-	}
-		.hero-block__wrapper {
+
+		.container {
 			position: relative;
 			height: 100%;
 			@include font-family(os300);
+			color: #fff;
 
 			@include viewport('max-width: 767px') {
 				padding-top: 0;
 			}
-
-			h2, p {
-				color: #fff;
+		}
+		.row {
+			height: 100%;
+			text-align: left;
+		}
+	}
+			.hero-block__title,
+			.hero-block__description {
 				@include selection () {
 					background: $color-yellow;
 					color: #000;
 					// text-shadow: none;
 				}
 			}
-			h2 {
+			.hero-block__title {
 				@include rem(margin, 0 0 25px);
 				@include rem(font-size, 44px);
 				line-height: 1.25;
 				text-shadow: 1px 1px 3px rgba(0,0,0, .5);
 			}
-			p {
+			.hero-block__description {
 				padding-right: 40px;
 				@include rem(font-size, 18px);
 				line-height: 1.44;
 				text-shadow: 1px 1px 1px rgba(0,0,0, .5);
 			}
-		}
 		.hero-block__content {
-			height: 100%;
-			text-align: left;
-		}
-		.hero-content__desc {
 			@include viewport('max-width: 1199px') {
 				width: 75%;
 			}
@@ -225,6 +221,21 @@
 				vertical-align: middle;
 				background-image: url(../images/button-store__icons.png);
 				background-repeat: no-repeat;
+
+				&:after {
+					content: attr(title);
+					display: block;
+					position: relative;
+					padding: 3px;
+					margin: 5px;
+					border: 1px solid;
+					border-radius: 3px;
+					font-size: 80%;
+					line-height: 1.2;
+					color: inherit;
+					text-align: left;
+					z-index: -1;
+				}
 			}
 				.button-store_apple {
 					background-position: -5px -5px;

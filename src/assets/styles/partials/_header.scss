@@ -1,12 +1,8 @@
 header {
 	position: relative;
-	@include rem(margin-top, 35px);
-	@include rem(padding-top, 10px);
-	@include viewport('max-width: 767px') {
-		.container {
-			position: static;
-		}
-	}
+	@include rem(margin-top, 25px);
+	@include rem(padding-top, 20px);
+
 	&.fixed-header {
 		position: fixed;
 		top: 0;
@@ -38,25 +34,24 @@ header {
 			position: static;
 			@include rem(margin-bottom, 20px);
 			@include rem(padding, 0 20px);
+			float: left;
 		}
 	}
-		
-		
+
 	.navbar {
+		position: static;
 		margin-bottom: 0;
-		// @include rem(padding, 0 20px);
 		border: 0;
 
 		@include viewport('max-width: 767px') {
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
+			float: right;
 			text-align: right;
 
 			.navbar-collapse {
-				position: relative;
-				min-width: 100%;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				// min-width: 100%;
 				background: #fff;
 				text-align: right;
 				z-index: 1;
@@ -66,7 +61,8 @@ header {
 
 		.navbar-toggle {
 			height: 100%;
-			@include rem(margin, 0 20px 0 0);
+			// @include rem(margin, 0 20px 0 0);
+			margin-right: 0;
 			float: none;
 
 			.icon-bar {

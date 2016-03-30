@@ -1,10 +1,10 @@
 section
 	.hero-block
-		.hero-block__wrapper.container
-			.hero-block__content.row.centered-content
-				.hero-content__desc.col-md-8.col-sm-7.col-xs-7
-					h2 С нами вызвать такси просто! Закажи такси одной кнопкой.
-					p Feb – Международная служба заказа такси! Мы движемся в ногу со временем. Наши технологии делают вашу поездку комфортной. Следи за движением машины и оцени водителя по завершении заказа!
+		.container
+			.row.centered-content
+				.hero-block__content.col-md-8.col-sm-7.col-xs-7
+					h2.hero-block__title С нами вызвать такси просто! Закажи такси одной кнопкой.
+					p.hero-block__description Feb – Международная служба заказа такси! Мы движемся в ногу со временем. Наши технологии делают вашу поездку комфортной. Следи за движением машины и оцени водителя по завершении заказа!
 				.hero-content__image
 					img(src="assets/images/phone.png", alt="phone")
 
@@ -15,9 +15,9 @@ section
 					.phone-apps__title Установите бесплатное приложение:
 					.phone-apps__content
 						span.phone-apps__store
-							a.button-store.button-store_google(href="//play.google.com/store/apps/details?id=ru.macrobit.taxi", target="blank")
+							a.button-store.button-store_google(href="//play.google.com/store/apps/details?id=ru.macrobit.taxi", target="blank", title="Скачать приложение на Android")
 						span.phone-apps__store
-							a.button-store.button-store_apple(href="//itunes.apple.com/ru/app/irtaxi/id927364613", target="blank")
+							a.button-store.button-store_apple(href="//itunes.apple.com/ru/app/irtaxi/id927364613", target="blank", title="Скачать приложение на iOS")
 					.phone-apps__note * Оператор связи может взымать плату за передачу данных в сети
 
 				.app-get-sms
@@ -34,7 +34,7 @@ section
 							tabindex="1",
 							data-inputmask="'mask': '(999)-999-9999'")
 						button#sendSmsBtn.app-get-sms__button.btn.btn-action(tabindex="2")
-						.app-get-sms__status(title='Нажмите, чтобы закрыть.')
+						.app-get-sms__status
 
 	.container.features-block
 		.row

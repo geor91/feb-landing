@@ -30,6 +30,7 @@ $(function(){
 				header.removeClass('fixed-header');
 			}
 		});
+
 	// CUSTOM MODAL FORMS
 		var febModal = {
 			init: function (targetId) {
@@ -91,7 +92,7 @@ $(function(){
 	// SEND SMS FORM
 		$('#getDLink').submit(function(e) {
 			e.preventDefault();
-			var self       = $('#getDLink'),
+			var self       = $(this),
 					formInput  = self.children('#sendSmsPhone'),
 					formSubmit = self.children('#sendSmsBtn'),
 					formResult = self.children('.app-get-sms__status'),
@@ -127,8 +128,13 @@ $(function(){
 					}, 5000);
 				})
 				.fail(function() {
+					formSubmit.attr('disabled', 'disabled');
 					formResult.addClass('alert-danger')
 						.text('Сообщение не отправлено.').show();
+					setTimeout(function() {
+						formResult.removeClass('alert-danger').hide().text('');
+						formSubmit.removeAttr('disabled');
+					}, 2000);
 				});
 			}
 
