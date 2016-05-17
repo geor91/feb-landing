@@ -10,11 +10,22 @@ $(function(){
 			e.preventDefault();
 
 			var targetId     = $(this).attr('href').slice(1),
-			    targetY      = document.getElementById(targetId).offsetTop,
+			    targetY      = $('#' + targetId).offset().top,
 			    headerH      = $('header').outerHeight(),
-			    scrollPos    = targetY - headerH;
+			    scrollPos    = targetY - headerH
+		    	scrolling    = false;
 
-			$('body,html').animate({scrollTop: scrollPos}, 600);
+			if (!scrolling) {
+				scrolling = true;
+
+				$('body,html').animate({
+					scrollTop: scrollPos
+				},
+				600,
+				function () {
+					scrolling = false;
+				});
+			}
 		});
 
 	// FIXED HEADER ON SCROLL
@@ -24,10 +35,10 @@ $(function(){
 			    windowScroll = $(window).scrollTop();
 
 			if (windowScroll > (headerH*2)) {
-				header.addClass('fixed-header');
+				header.addClass('header-fixed');
 			}
 			else {
-				header.removeClass('fixed-header');
+				header.removeClass('header-fixed');
 			}
 		});
 

@@ -29,8 +29,8 @@
       <section>
         <div class="hero-block">
           <div class="container">
-            <div class="row centered-content">
-              <div class="hero-block__content col-md-8 col-sm-7 col-xs-7">
+            <div class="row">
+              <div class="hero-block__content">
                 <h2 class="hero-block__title">С нами вызвать такси просто! Закажи такси одной кнопкой.</h2>
                 <p class="hero-block__description">Feb – Международная служба заказа такси! Мы движемся в ногу со временем. Наши технологии делают вашу поездку комфортной. Следи за движением машины и оцени водителя по завершении заказа!</p>
               </div>
@@ -164,13 +164,11 @@
         </div>
       </section>
       <section>
-        <div class="action-block text-center">
-          <div class="col-md-6 center-block">
-            <h2 class="block__title block__title_lg">Быстрый старт</h2>
-            <div class="block__content quick-start__content center-block">Начать бизнес с FEB просто! У нас отличное веб-приложение для диспетчеров. Вам не нужен IT-отдел или какая-либо интеграция. Наша диспетчерская всегда к вашим услугам. Присоединяйтесь к нам!</div>
-            <button data-modal="#quickStart" class="quick-start__button btn btn-action">Получить подробную информацию</button>
-            <div class="quick-start__additional">Мы гарантируем успех вашего бизнеса!!! <br> С Feb - Вы всегда на шаг впереди!</div>
-          </div>
+        <div class="action-block quick-start">
+          <h2 class="block__title block__title_lg">Быстрый старт</h2>
+          <div class="block__content quick-start__content">Начать бизнес с FEB просто! У нас отличное веб-приложение для диспетчеров. Вам не нужен IT-отдел или какая-либо интеграция. Наша диспетчерская всегда к вашим услугам. Присоединяйтесь к нам!</div>
+          <button data-modal="#quickStart" class="quick-start__button btn btn-action">Получить подробную информацию</button>
+          <div class="quick-start__additional">Мы гарантируем успех вашего бизнеса!!! <br> С Feb - Вы всегда на шаг впереди!</div>
         </div>
       </section>
     </div>
@@ -184,7 +182,7 @@
       </div>
     </footer>
     <script id="driverRegTpl" type="x-template">
-      <div id="driverReg" class="modal fade">
+      <div id="driverReg" class="modal fade"><!-- К черту валидацию, да здравствует говнокод! -->
         <div class="ajax-form"><a href="#" data-dismiss="modal" class="ajax-form__close-btn"></a>
           <div class="ajax-form__head">
             <div class="ajax-form__title">Заявка на регистрацию водителя</div>

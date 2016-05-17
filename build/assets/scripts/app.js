@@ -1,1 +1,158 @@
-$(function(){$("[data-modal]").click(function(e){var a=$(this).data("modal");t.init(a)}),$(".js-anchor").click(function(t){t.preventDefault();var e=$(this).attr("href").slice(1),a=document.getElementById(e).offsetTop,i=$("header").outerHeight(),n=a-i;$("body,html").animate({scrollTop:n},600)}),$(window).scroll(function(){var t=$("header"),e=t.outerHeight(),a=$(window).scrollTop();a>2*e?t.addClass("fixed-header"):t.removeClass("fixed-header")});var t={init:function(t){this.targetId=t,this.targetHtml=$(t+"Tpl").html(),this.appendModal(),this.initEvents()},appendModal:function(){$("body").append(this.targetHtml)},removeModal:function(){$(this.targetId).remove()},initEvents:function(){$(this.targetId).modal("show"),$(this.targetId+" .inputmask").inputmask(),$(this.targetId).on("hidden.bs.modal",function(){t.removeModal()}),$(this.targetId+" form.js-ajax-form").on("submit",function(t){t.preventDefault();var e=$(this).parents(".ajax-form"),a=$(this).serializeArray(),i={};for(var n in a){var s=a[n];i[s.name]=s.value}$.ajax({url:"/taxi/public/statement?native=true",type:"POST",data:JSON.stringify(i),contentType:"application/json; charset=utf-8"}).done(function(){$(e).addClass("ajax-form_completed")}).fail(function(){alert("Проблемы с соединением. Заявка не была отправлена.")})})}};$("#getDLink").submit(function(t){t.preventDefault();var e=$(this),a=e.children("#sendSmsPhone"),i=e.children("#sendSmsBtn"),n=e.children(".app-get-sms__status"),s=a.inputmask("unmaskedvalue");if(s){if(10!=s.length)return i.attr("disabled","disabled"),n.addClass("alert-danger").text("Неверный формат.").show(),setTimeout(function(){n.removeClass("alert-danger").hide().text(""),i.removeAttr("disabled")},3e3),!1;var r="/taxi/rest/public/link/7"+s;$.ajax({url:r,type:"POST"}).done(function(){a.val(""),i.attr("disabled","disabled"),n.addClass("alert-success").text("Сообщение отправлено.").show(),setTimeout(function(){n.removeClass("alert-success").hide().text(""),i.removeAttr("disabled")},5e3)}).fail(function(){i.attr("disabled","disabled"),n.addClass("alert-danger").text("Сообщение не отправлено.").show(),setTimeout(function(){n.removeClass("alert-danger").hide().text(""),i.removeAttr("disabled")},2e3)})}})}),$(function(){$(".inputmask").inputmask()});
+$(function(){
+	// BOOTSTRAP CUSTOM MODALS
+		$('[data-modal]').click(function(e) {
+			var targetId  = $(this).data('modal');
+			febModal.init(targetId);
+		});
+
+	// SMOOTH SCROLL TO ANCHORS
+		$(".js-anchor").click(function (e) {
+			e.preventDefault();
+
+			var targetId     = $(this).attr('href').slice(1),
+			    targetY      = $('#' + targetId).offset().top,
+			    headerH      = $('header').outerHeight(),
+			    scrollPos    = targetY - headerH
+		    	scrolling    = false;
+
+			if (!scrolling) {
+				scrolling = true;
+
+				$('body,html').animate({
+					scrollTop: scrollPos
+				},
+				600,
+				function () {
+					scrolling = false;
+				});
+			}
+		});
+
+	// FIXED HEADER ON SCROLL
+		$(window).scroll(function(){
+			var header       = $('header'),
+			    headerH      = header.outerHeight(),
+			    windowScroll = $(window).scrollTop();
+
+			if (windowScroll > (headerH*2)) {
+				header.addClass('header-fixed');
+			}
+			else {
+				header.removeClass('header-fixed');
+			}
+		});
+
+	// CUSTOM MODAL FORMS
+		var febModal = {
+			init: function (targetId) {
+				this.targetId = targetId;
+				this.targetHtml = $(targetId+'Tpl').html();
+				this.appendModal();
+				this.initEvents();
+			},
+
+			appendModal: function () {
+				$('body').append(this.targetHtml);
+			},
+
+			removeModal: function () {
+				$(this.targetId).remove();
+			},
+
+			initEvents: function() {
+				$(this.targetId).modal('show');
+
+				// mask for inputs
+				$(this.targetId + ' .inputmask').inputmask();
+
+				// close modal
+				$(this.targetId).on('hidden.bs.modal', function () {
+					febModal.removeModal();
+				});
+
+				// ajax form submit
+				$(this.targetId + ' form.js-ajax-form').on('submit', function(e) {
+					e.preventDefault();
+
+					var formWrap = $(this).parents('.ajax-form');
+					var formData = $(this).serializeArray();
+					var jsonData = {};
+
+					for (var i in formData) {
+						var item = formData[i];
+						jsonData[item.name] = item.value;
+					}
+
+					$.ajax({
+						url: '/taxi/public/statement?native=true',
+						type: "POST",
+						data: JSON.stringify(jsonData),
+						contentType: "application/json; charset=utf-8"
+					})
+					.done(function() {
+						$(formWrap).addClass("ajax-form_completed");
+					})
+					.fail(function() {
+						alert('Проблемы с соединением. Заявка не была отправлена.');
+					});
+
+				});
+			},
+		};
+
+	// SEND SMS FORM
+		$('#getDLink').submit(function(e) {
+			e.preventDefault();
+			var self       = $(this),
+					formInput  = self.children('#sendSmsPhone'),
+					formSubmit = self.children('#sendSmsBtn'),
+					formResult = self.children('.app-get-sms__status'),
+			    formData   = formInput.inputmask('unmaskedvalue');
+
+			if (formData) {
+				// phone num validation
+				if (formData.length != 10) {
+					formSubmit.attr('disabled', 'disabled');
+					formResult.addClass('alert-danger')
+						.text('Неверный формат.').show();
+					setTimeout(function() {
+						formResult.removeClass('alert-danger').hide().text('');
+						formSubmit.removeAttr('disabled');
+					}, 3000);
+					return false;
+				}
+
+				var url = '/taxi/rest/public/link/' + '7' + formData;
+
+				$.ajax({
+					url: url,
+					type: 'POST'
+				})
+				.done(function() {
+					formInput.val('');
+					formSubmit.attr('disabled', 'disabled');
+					formResult.addClass('alert-success')
+						.text('Сообщение отправлено.').show();
+					setTimeout(function() {
+						formResult.removeClass('alert-success').hide().text('');
+						formSubmit.removeAttr('disabled');
+					}, 5000);
+				})
+				.fail(function() {
+					formSubmit.attr('disabled', 'disabled');
+					formResult.addClass('alert-danger')
+						.text('Сообщение не отправлено.').show();
+					setTimeout(function() {
+						formResult.removeClass('alert-danger').hide().text('');
+						formSubmit.removeAttr('disabled');
+					}, 2000);
+				});
+			}
+
+		});
+
+});
+$(function(){
+	// Init mask on input.inputmask
+	$(".inputmask").inputmask();
+});

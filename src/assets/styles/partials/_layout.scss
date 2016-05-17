@@ -21,10 +21,12 @@ body {
 }
 
 .main-wrap {
+	position: relative;
 	max-width: $layout-width;
 	margin: 0 auto;
 	min-height: 100%;
 	margin-bottom: -$footer-height;
+	@include rem(padding-top, 115px);
 
 	&:after {
 		content: "";

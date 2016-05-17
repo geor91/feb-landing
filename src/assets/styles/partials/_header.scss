@@ -1,19 +1,20 @@
 header {
-	position: relative;
-	@include rem(margin-top, 25px);
-	@include rem(padding-top, 20px);
+	// position: relative;
+	position: absolute;
+	@include rem(top, 40px);
+	left: 0;
+	width: 100%;
+	border-bottom: 1px solid #fff;
+	transition: border-color .3s, position .3s, background .3s;
 
-	&.fixed-header {
+	&.header-fixed {
 		position: fixed;
 		top: 0;
-		left: 0;
-		width: 100%;
 		background: #fff;
-		margin: 0;
-		border-bottom: 1px solid #ccc;
+		border-color: #ccc;
 		box-shadow: 0 1px 8px rgba(0,0,0, .3);
 		z-index: 1;
-		transition: all .3s, margin-top .01s; // margin-top no transition
+		// transition: all .3s, margin-top .01s; // margin-top no transition
 
 		.container {
 			position: relative;
@@ -22,6 +23,11 @@ header {
 			left: 80px;
 			bottom: 7px;
 		}
+	}
+
+	// bootstrap modal no scroll hack
+	.modal-open & {
+		padding-right: 17px;
 	}
 
 	.site-logo {
